@@ -18,7 +18,7 @@ RUN apt -y install texlive-font-utils linuxdoc-tools-text linuxdoc-tools-latex d
 RUN git clone https://github.com/tLDP/python-tldp
 RUN cd python-tldp && rm -rf debian && python3 setup.py --command-packages=stdeb.command bdist_deb
 RUN dpkg -i python-tldp/deb_dist/python3-tldp_*_all.deb
+RUN rm -rf python-tldp
 
 # we are done?
 RUN ldptool --dump-cfg
-RUN rm -rf python-tldp
