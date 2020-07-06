@@ -12,7 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt update
 
 # installing required packages and cleaning up after
-RUN apt -y install texlive-font-utils linuxdoc-tools-text linuxdoc-tools-latex docbook-dsssl docbook-xsl docbook-utils htmldoc htmldoc-common docbook-xsl html2text docbook5-xml docbook-xsl-ns jing asciidoc libxml2-utils python3-stdeb fakeroot python3-all python3-networkx python3-nose fop ldp-docbook-xsl ldp-docbook-dsssl docbook opensp dh-python git python-all rsync && rm -rf /var/lib/apt/lists/* && apt clean
+RUN apt -y install texlive-font-utils linuxdoc-tools-text linuxdoc-tools-latex docbook-dsssl docbook-xsl docbook-utils htmldoc htmldoc-common docbook-xsl html2text docbook5-xml docbook-xsl-ns jing asciidoc libxml2-utils python3-stdeb fakeroot python3-all python3-networkx python3-nose fop ldp-docbook-xsl ldp-docbook-dsssl docbook opensp dh-python git python-all rsync fop && rm -rf /var/lib/apt/lists/* && apt clean
 
 # getting our builder soft
 RUN git clone https://github.com/tLDP/python-tldp
