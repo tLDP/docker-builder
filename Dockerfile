@@ -1,7 +1,7 @@
 # (C) Serge Victor 2020
 
 # we always try to operate on recent ubuntu LTS
-FROM ubuntu:focal
+FROM ubuntu:bionic
 
 LABEL maintainer="ser@gnu.org"
 LABEL version="0.1"
