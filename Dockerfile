@@ -1,10 +1,14 @@
-# (C) Serge Victor 2020
+# (C) Serge Victor 2020-2024
+
+#################################################################################################
+# STAGE 1/2
+#################################################################################################
 
 # we always try to operate on recent ubuntu LTS
-FROM ubuntu:bionic
+FROM ubuntu:jammy
 
 LABEL maintainer="ser@gnu.org"
-LABEL version="0.1"
+LABEL version="0.2"
 LABEL description="LDP Builder as a Docker image"
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -18,7 +22,24 @@ RUN apt -y install texlive-font-utils linuxdoc-tools-text linuxdoc-tools-latex d
 RUN git clone https://github.com/tLDP/python-tldp
 RUN cd python-tldp && rm -rf debian && python3 setup.py --command-packages=stdeb.command bdist_deb
 RUN dpkg -i python-tldp/deb_dist/python3-tldp_*_all.deb
-RUN rm -rf python-tldp
 
 # we are done?
 RUN ldptool --dump-cfg
+
+#################################################################################################
+# STAGE 2/2
+#################################################################################################
+
+FROM ubuntu:jammy
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+
+COPY --from=0 python-tldp/deb_dist/python3-tldp_*_all.deb .
+RUN apt install ./python3-tldp_*_all.deb --fix-broken -y
+
+# we are done?
+RUN ldptool --dump-cfg
+
+# the happy end.
