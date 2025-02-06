@@ -16,7 +16,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 
 # installing required packages and cleaning up after
-RUN apt-get -y install texlive-font-utils linuxdoc-tools-text linuxdoc-tools-latex docbook-dsssl docbook-xsl docbook-utils htmldoc htmldoc-common docbook-xsl html2text docbook5-xml docbook-xsl-ns jing asciidoc libxml2-utils python3-stdeb fakeroot python3-all python3-networkx python3-nose fop ldp-docbook-xsl ldp-docbook-dsssl docbook opensp dh-python git python-all
+RUN apt-get -y install git texlive-font-utils linuxdoc-tools-text linuxdoc-tools-latex docbook-dsssl docbook-xsl docbook-utils htmldoc htmldoc-common docbook-xsl html2text docbook5-xml docbook-xsl-ns jing asciidoc libxml2-utils python3-stdeb fakeroot python3-all python3-networkx python3-nose fop ldp-docbook-xsl ldp-docbook-dsssl docbook opensp dh-python git python-all
 
 # getting our builder soft
 RUN git clone https://github.com/tLDP/python-tldp
@@ -35,7 +35,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 
-RUN apt-get install -y rsync asciidoc docbook docbook-xsl-ns docbook5-xml fop html2text htmldoc jing ldp-docbook-dsssl ldp-docbook-xsl linuxdoc-tools-latex linuxdoc-tools-text python3 python3-networkx python3-nose sgml2x texlive-font-utils xsltproc
+RUN apt-get install -y git rsync asciidoc docbook docbook-xsl-ns docbook5-xml fop html2text htmldoc jing ldp-docbook-dsssl ldp-docbook-xsl linuxdoc-tools-latex linuxdoc-tools-text python3 python3-networkx python3-nose sgml2x texlive-font-utils xsltproc
 
 COPY --from=0 python-tldp/deb_dist/python3-tldp_*_all.deb .
 RUN apt-get install ./python3-tldp_*_all.deb --fix-broken -y
