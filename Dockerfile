@@ -44,6 +44,9 @@ RUN apt-get clean
 RUN apt-get autoremove -y
 RUN rm -rf /var/lib/apt/lists/*
 
+# Add directory lister
+ADD directory-indexer-single-level.py /bin
+
 # we are done?
 RUN ldptool --dump-cfg
 
