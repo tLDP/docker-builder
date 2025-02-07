@@ -8,7 +8,7 @@
 FROM ubuntu:jammy
 
 LABEL maintainer="ser@gnu.org"
-LABEL version="0.3"
+LABEL version="0.99"
 LABEL description="LDP Builder as a Docker image"
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -30,6 +30,10 @@ RUN ldptool --dump-cfg
 # STAGE 2/2
 #################################################################################################
 FROM ubuntu:jammy
+
+LABEL maintainer="ser@gnu.org"
+LABEL version="0.99"
+LABEL description="LDP Builder as a Docker image"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
