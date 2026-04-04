@@ -32,7 +32,7 @@ RUN ldptool --dump-cfg
 FROM ubuntu:jammy
 
 LABEL maintainer="ser@gnu.org"
-LABEL version="0.99"
+LABEL version="0.100"
 LABEL description="LDP Builder as a Docker image"
 
 ARG DEBIAN_FRONTEND=noninteractive
