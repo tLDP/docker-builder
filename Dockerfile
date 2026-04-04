@@ -19,7 +19,7 @@ RUN apt-get update
 RUN apt-get -y install git texlive-font-utils linuxdoc-tools-text linuxdoc-tools-latex docbook-dsssl docbook-xsl docbook-utils htmldoc htmldoc-common docbook-xsl html2text docbook5-xml docbook-xsl-ns jing asciidoc libxml2-utils python3-stdeb fakeroot python3-all python3-networkx python3-nose fop ldp-docbook-xsl ldp-docbook-dsssl docbook opensp dh-python git python-all
 
 # getting our builder soft
-RUN git clone https://github.com/tLDP/python-tldp
+RUN git clone --branch ng https://github.com/tLDP/python-tldp
 RUN cd python-tldp && rm -rf debian && python3 setup.py --command-packages=stdeb.command bdist_deb
 RUN dpkg -i python-tldp/deb_dist/python3-tldp_*_all.deb
 
